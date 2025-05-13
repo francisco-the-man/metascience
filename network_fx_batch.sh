@@ -41,7 +41,7 @@ FILE_TO_PROCESS=${FILES[$ACTUAL_INDEX]}
 echo "Processing file: $FILE_TO_PROCESS"
 
 # Run your Python script
-python $HOME/projects/thesis/metascience/network_fx_extraction.py "$FILE_TO_PROCESS"
+python $HOME/projects/metascience/network_fx_extraction.py "$FILE_TO_PROCESS"
 
 deactivate
 
