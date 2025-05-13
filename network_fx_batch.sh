@@ -19,12 +19,18 @@ module load python/3.9.0
 VENV_HOME=$HOME/venvs/metascience_env
 source "$VENV_HOME/bin/activate"
 
+which python3
+python3 --version
+which pip3
+pip3 --version
+pip3 show keras
+
 # Install packages (only if not already installed)
 if [ ! -f "$VENV_HOME/.packages_installed" ]; then
-    "$VENV_HOME/bin/pip" install --upgrade pip
-    "$VENV_HOME/bin/pip" install numpy scipy networkx python-louvain scikit-learn pandas
-    "$VENV_HOME/bin/pip" install tensorflow==2.13.1
-    "$VENV_HOME/bin/pip" install keras==2.13.1
+    "$VENV_HOME/bin/pip3" install --upgrade pip
+    "$VENV_HOME/bin/pip3" install numpy scipy networkx python-louvain scikit-learn pandas
+    "$VENV_HOME/bin/pip3" install tensorflow==2.13.1
+    "$VENV_HOME/bin/pip3" install keras==2.13.1
     touch "$VENV_HOME/.packages_installed"
     echo "Packages installed"
 else
@@ -43,7 +49,7 @@ FILE_TO_PROCESS=${FILES[$ACTUAL_INDEX]}
 echo "Processing file: $FILE_TO_PROCESS"
 
 # Run your Python script
-python $HOME/projects/metascience/network_fx_extraction.py "$FILE_TO_PROCESS"
+python3 $HOME/projects/metascience/network_fx_extraction.py "$FILE_TO_PROCESS"
 
 deactivate
 
