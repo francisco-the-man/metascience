@@ -30,7 +30,7 @@ else
 fi
 
 # array of all pickle files
-FILES=($(ls $HOME/Projects/thesis/metascience/Sims2500new/*.pkl))
+FILES=($(ls /scratch/users/averylou/Sims2500New/*.pkl))
 
 # Calculate the actual index for this job
 ACTUAL_INDEX=$((BATCH_START + SLURM_ARRAY_TASK_ID))
