@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
-#SBATCH --array=0-2499
+#SBATCH --array=0-3001
 
 # Check if BATCH_START is set, if not, set it to 0
 : ${BATCH_START:=0}
