@@ -14,6 +14,8 @@ echo "Job started at $(date)"
 echo "Running on node: $(hostname)"
 echo "Processing batch starting at index: $BATCH_START"
 
+module load python/3.9.0
+
 VENV_HOME=$HOME/venvs/metascience_env
 source "$VENV_HOME/bin/activate"
 
@@ -21,8 +23,8 @@ source "$VENV_HOME/bin/activate"
 if [ ! -f "$VENV_HOME/.packages_installed" ]; then
     "$VENV_HOME/bin/pip" install --upgrade pip
     "$VENV_HOME/bin/pip" install numpy scipy networkx python-louvain scikit-learn pandas
-    "$VENV_HOME/bin/pip" install tensorflow==1.14.0
-    "$VENV_HOME/bin/pip" install keras==2.10.0
+    "$VENV_HOME/bin/pip" install tensorflow==2.13.1
+    "$VENV_HOME/bin/pip" install keras==2.13.1
     touch "$VENV_HOME/.packages_installed"
     echo "Packages installed"
 else
