@@ -821,7 +821,7 @@ def main():
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(input_file))[0]
     output_file = "{}_processed_clust.csv".format(base_name)
-    output_dir = os.path.join(os.environ['HOME'], 'CJ', 'pickle', 'processed_files', 'clustering')
+    output_dir = os.path.join(os.environ['HOME'], 'projects', 'metascience', 'processed_files')
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, output_file)
     

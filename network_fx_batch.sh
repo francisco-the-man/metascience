@@ -18,12 +18,12 @@ VENV_HOME=$HOME/venvs/metascience_env
 source "$VENV_HOME/bin/activate"
 
 # Install packages (only if not already installed)
-if [ ! -f "$VENV_DIR/.packages_installed" ]; then
-    pip install --upgrade pip
-    pip install numpy scipy networkx python-louvain scikit-learn pandas
-    pip install tensorflow==2.13.1
-    pip install keras==2.13.1
-    touch "$VENV_DIR/.packages_installed"
+if [ ! -f "$VENV_HOME/.packages_installed" ]; then
+    "$VENV_HOME/bin/pip" install --upgrade pip
+    "$VENV_HOME/bin/pip" install numpy scipy networkx python-louvain scikit-learn pandas
+    "$VENV_HOME/bin/pip" install tensorflow==2.13.1
+    "$VENV_HOME/bin/pip" install keras==2.13.1
+    touch "$VENV_HOME/.packages_installed"
     echo "Packages installed"
 else
     echo "Packages already installed, skipping installation"
@@ -41,7 +41,7 @@ FILE_TO_PROCESS=${FILES[$ACTUAL_INDEX]}
 echo "Processing file: $FILE_TO_PROCESS"
 
 # Run your Python script
-python $HOME/Projects/thesis/metascience/network_fx_extraction.py "$FILE_TO_PROCESS"
+python $HOME/projects/thesis/metascience/network_fx_extraction.py "$FILE_TO_PROCESS"
 
 deactivate
 
