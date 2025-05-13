@@ -15,33 +15,14 @@ echo "Running on node: $(hostname)"
 echo "Processing batch starting at index: $BATCH_START"
 
 module load python/3.9.0
+source $HOME/venvs/metascience_env/bin/activate
 
-PYTHON3=$(which python3)
-VENV_HOME=$HOME/venvs/metascience_env
-source "$VENV_HOME/bin/activate"
-
-if [ ! -d "$VENV_HOME" ]; then
-    echo "Creating new virtual environment..."
-    $PYTHON3 -m venv $VENV_HOME
-fi
-
-echo "Activating virtual environment..."
-source $VENV_HOME/bin/activate
-
-echo "Python version in virtual environment:"
+# Debug info (optional, can comment out after confirming)
 python --version
-
-# Install packages if needed
-if [ ! -f "$VENV_HOME/.packages_installed" ]; then
-    pip install --upgrade pip
-    pip install numpy scipy networkx python-louvain scikit-learn pandas
-    pip install tensorflow==2.13.1
-    pip install keras==2.13.1
-    touch "$VENV_HOME/.packages_installed"
-    echo "Packages installed"
-else
-    echo "Packages already installed, skipping installation"
-fi
+which python
+which pip
+pip show numpy
+pip show keras
 
 # array of all pickle files
 FILES=($(ls /scratch/users/averylou/Sims2500New/*.pkl))
