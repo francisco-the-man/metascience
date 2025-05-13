@@ -22,14 +22,14 @@ source "$VENV_HOME/bin/activate"
 which python
 python --version
 which pip
-pip --version
-pip show keras
+$VENV_HOME/bin/pip --version
+$VENV_HOME/bin/pip show keras
 
 if [ ! -f "$VENV_HOME/.packages_installed" ]; then
-    pip install --upgrade pip
-    pip install numpy scipy networkx python-louvain scikit-learn pandas
-    pip install tensorflow==2.13.1
-    pip install keras==2.13.1
+    $VENV_HOME/bin/pip install --upgrade pip
+    $VENV_HOME/bin/pip install numpy scipy networkx python-louvain scikit-learn pandas
+    $VENV_HOME/bin/pip install tensorflow==2.13.1
+    $VENV_HOME/bin/pip install keras==2.13.1
     touch "$VENV_HOME/.packages_installed"
     echo "Packages installed"
 else
