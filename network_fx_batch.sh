@@ -16,20 +16,27 @@ echo "Processing batch starting at index: $BATCH_START"
 
 module load python/3.9.0
 
+PYTHON3=$(which python3)
 VENV_HOME=$HOME/venvs/metascience_env
 source "$VENV_HOME/bin/activate"
 
-which python
-python --version
-which pip
-$VENV_HOME/bin/pip --version
-$VENV_HOME/bin/pip show keras
+if [ ! -d "$VENV_HOME" ]; then
+    echo "Creating new virtual environment..."
+    $PYTHON3 -m venv $VENV_HOME
+fi
 
+echo "Activating virtual environment..."
+source $VENV_HOME/bin/activate
+
+echo "Python version in virtual environment:"
+python --version
+
+# Install packages if needed
 if [ ! -f "$VENV_HOME/.packages_installed" ]; then
-    $VENV_HOME/bin/pip install --upgrade pip
-    $VENV_HOME/bin/pip install numpy scipy networkx python-louvain scikit-learn pandas
-    $VENV_HOME/bin/pip install tensorflow==2.13.1
-    $VENV_HOME/bin/pip install keras==2.13.1
+    pip install --upgrade pip
+    pip install numpy scipy networkx python-louvain scikit-learn pandas
+    pip install tensorflow==2.13.1
+    pip install keras==2.13.1
     touch "$VENV_HOME/.packages_installed"
     echo "Packages installed"
 else
