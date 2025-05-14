@@ -1,0 +1,8 @@
+numpy
+scipy
+networkx
+python-louvain
+scikit-learn
+pandas
+tensorflow==2.13.1
+keras==2.13.1

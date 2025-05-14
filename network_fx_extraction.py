@@ -786,10 +786,21 @@ def extract_data_from_file(filename):
     naive_subjective = state['naive_subjective']
     naive_objective = state['naive_objective']
 
+    from collections import defaultdict
+
+    def get_communities_from_partition(partition):
+        # partition: dict of node -> community_id
+        communities = defaultdict(set)
+        for node, com_id in partition.items():
+            communities[com_id].add(node)
+        return list(communities.values())
+    
+    communities = get_communities_from_partition(com.communities)
+
     # Extract just the clustering coefficients from the adoption graph
     clust_coeff_top, clust_coeff_avg = Evaluation.clust_coef(com.adoption_graph, len(scientists))
     betweenness_top, betweenness_avg = Evaluation.betweenness_centrality(com.adoption_graph, len(scientists))
-    modularity = Evaluation.modularity(com.adoption_graph, com)
+    modularity = Evaluation.modularity(com.adoption_graph, communities)
     edge_density = Evaluation.edge_density(com.adoption_graph)
     global_efficiency = Evaluation.global_efficiency(com.adoption_graph)
     local_efficiency = Evaluation.local_efficiency(com.adoption_graph)
