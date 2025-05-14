@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=nfx_extract
 #SBATCH --output=logs/%A_%a.out          # %A = jobID, %a = array index
-#SBATCH --time=01:00:00
+#SBATCH --time=03:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
