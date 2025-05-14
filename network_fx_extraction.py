@@ -787,8 +787,8 @@ def extract_data_from_file(filename):
     naive_objective = state['naive_objective']
 
     # Extract just the clustering coefficients from the adoption graph
-    clust_coeff_top, clust_coeff_avg = Evaluation.clust_coef(com.adoption_graph)
-    betweenness_top, betweenness_avg = Evaluation.betweenness_centrality(com.adoption_graph)
+    clust_coeff_top, clust_coeff_avg = Evaluation.clust_coef(com.adoption_graph, len(scientists))
+    betweenness_top, betweenness_avg = Evaluation.betweenness_centrality(com.adoption_graph, len(scientists))
     modularity = Evaluation.modularity(com.adoption_graph, com)
     edge_density = Evaluation.edge_density(com.adoption_graph)
     global_efficiency = Evaluation.global_efficiency(com.adoption_graph)
