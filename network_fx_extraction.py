@@ -725,24 +725,28 @@ class Evaluation:
         betweenness_avg = np.mean([nx.betweenness_centrality(adoption_graph, weight='weight', normalized=True)[n] for n in adoption_graph.nodes()])
         return betweenness_top, betweenness_avg
 
-    def modularity(adoption_graph, com):
-        return nx.community.modularity(adoption_graph, com.communities.values())
+    def modularity(adoption_graph, communities):
+        return nx.community.modularity(adoption_graph, communities)
     
     def edge_density(adoption_graph):
         return nx.density(adoption_graph)
     
     def global_efficiency(adoption_graph):
-        return nx.global_efficiency(adoption_graph)
+        G = adoption_graph.to_undirected()
+        return nx.global_efficiency(G)
     
     def local_efficiency(adoption_graph):
-        return nx.local_efficiency(adoption_graph)
+        G = adoption_graph.to_undirected()
+        return nx.local_efficiency(G)
     
     def citation_kurtosis(adoption_graph):
-        return nx.kurtosis(adoption_graph)
-    
+        # Use weighted in-degree (can change to out_degree if desired)
+        in_degrees = [adoption_graph.out_degree(n, weight='weight') for n in adoption_graph.nodes()]
+        return ss.kurtosis(in_degrees, fisher=True, bias=False)
+
     def citation_skewness(adoption_graph):
-        return nx.skewness(adoption_graph)
-    
+        in_degrees = [adoption_graph.out_degree(n, weight='weight') for n in adoption_graph.nodes()]
+        return ss.skew(in_degrees, bias=False)
     
     
     
