@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=nfx_extract
 #SBATCH --output=logs/%A_%a.out          # %A = jobID, %a = array index
-#SBATCH --time=03:00:00
+#SBATCH --time=05:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
-#SBATCH --array=1000-1999
+#SBATCH --array=830-1830
 
 # Check if BATCH_START is set, if not, set it to 0
 : ${BATCH_START:=0}
