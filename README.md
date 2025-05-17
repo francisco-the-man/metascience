@@ -1,4 +1,4 @@
-## Metascience Modelling!!
+## Metascience Modelling
 In collaboration with Marina Dubova @ SFI supported by the NSF SFI summer research for undergrads.
 
 Here is some background on how things work...
